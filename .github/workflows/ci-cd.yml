@@ -1,0 +1,25 @@
+name: CI/CD Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set Up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+
+      - name: Run Tests
+        run: |
+          javac LoginApp.java LoginAppTest.java
+          java org.junit.platform.console.ConsoleLauncher --select-class=LoginAppTest
