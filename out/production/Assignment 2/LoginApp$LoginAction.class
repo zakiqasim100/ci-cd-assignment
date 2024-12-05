@@ -1,0 +1,23 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
+class LoginApp$LoginAction implements ActionListener {
+   private LoginApp$LoginAction(final LoginApp var1) {
+      this.this$0 = var1;
+   }
+
+   public void actionPerformed(ActionEvent e) {
+      String email = this.this$0.emailField.getText();
+      new String(this.this$0.passwordField.getPassword());
+      String userName = this.this$0.authenticateUser(email);
+      if (userName != null) {
+         JOptionPane.showMessageDialog((Component)null, "Welcome, " + userName + "!", "Login Successful", 1);
+      } else {
+         JOptionPane.showMessageDialog((Component)null, "User not found.", "Login Failed", 0);
+      }
+
+   }
+}
