@@ -4,7 +4,6 @@ on:
   pull_request:
     branches:
       - main
-      - master
 
 jobs:
   build-and-test:
@@ -17,9 +16,11 @@ jobs:
       - name: Set Up Java
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
+          java-version: '21'           # Or '17' if you're using Java 17
+          distribution: 'temurin'      # Specify the Java distribution
+
+      - name: Compile Java Files
+        run: javac src/LoginApp.java test/LoginAppTest.java
 
       - name: Run Tests
-        run: |
-          javac LoginApp.java LoginAppTest.java
-          java org.junit.platform.console.ConsoleLauncher --select-class=LoginAppTest
+        run: java org.junit.platform.console.ConsoleLauncher --select-class=test.LoginAppTest
