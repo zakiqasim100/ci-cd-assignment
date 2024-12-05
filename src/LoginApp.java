@@ -76,6 +76,8 @@ public class LoginApp extends JFrame {
     }
 
     public static void main(String[] args) {
+        System.out.println("Testing CI/CD pipeline!"); // Added this line for testing
+
         SwingUtilities.invokeLater(() -> {
             LoginApp loginApp = new LoginApp();
             loginApp.setVisible(true);
